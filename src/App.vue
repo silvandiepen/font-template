@@ -1,29 +1,25 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
+	<div id="app">
+		<Options class="option-panel" />
+		<div class="canvas-panel">
+			<Settings />
+			<TemplateCanvas />
+		</div>
+	</div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import Vue from 'vue';
+import { Options, TemplateCanvas, Settings } from '@/components';
 
 export default Vue.extend({
-  name: "App",
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		Settings,
+		TemplateCanvas,
+		Options
+	}
 });
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" src="@/assets/scss/app.scss" />
