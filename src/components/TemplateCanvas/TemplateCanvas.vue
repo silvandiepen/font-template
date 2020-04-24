@@ -49,9 +49,12 @@ export default Vue.extend({
 		}
 	}),
 	watch: {
-		charsSets: function(val: CharactersType[]) {
-			this.download.active = false;
-			if (val.length > 0) this.createImage();
+		charsSets: {
+			handler(val: CharactersType[]) {
+				this.download.active = false;
+				if (val.length > 0) this.createImage();
+			},
+			immediate: true
 		}
 	},
 	methods: {
