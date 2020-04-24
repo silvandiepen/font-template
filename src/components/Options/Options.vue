@@ -45,28 +45,30 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .options {
+	padding: 1em;
+	background-color: rgba(80, 50, 0, 0.1);
 	li,
 	ul {
 		margin: 0;
 		list-style-type: none;
 	}
-	background-color: white;
 	&__list {
 		padding: 1em;
+		border-radius: 1em;
+		background-color: white;
 	}
 	&__option {
 		border-radius: 0.5em;
 		display: block;
-		box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.1),
-			0 0em 0em 1px rgba(0, 0, 0, 0) inset;
 		background-color: white;
 		padding: 1em;
+		border: 1px solid transparent;
 		& + & {
 			margin-top: 1em;
 		}
 		&--active {
-			box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.25),
-				0 0em 0em 1px rgba(0, 0, 0, 0.25) inset;
+			border-color: rgba(100, 200, 255, 1);
+			// color: white;
 			.options__set {
 				opacity: 0.5;
 			}
@@ -96,7 +98,6 @@ export default Vue.extend({
 		max-width: 13em;
 		display: flex;
 		flex-wrap: wrap;
-		color: black;
 		opacity: 0.25;
 	}
 	&__character {
@@ -106,6 +107,7 @@ export default Vue.extend({
 		// background-color: rgba(0, 0, 0, 0.5);
 		line-height: 1.5em;
 		text-align: center;
+		color: currentColor;
 		// color: white;
 		margin: 1em;
 	}

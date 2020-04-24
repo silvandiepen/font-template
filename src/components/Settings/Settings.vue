@@ -1,11 +1,23 @@
 <template>
 	<div class="settings">
 		<div class="input-field">
-			<input type="number" min="0" max="100" v-model="letterOpacity" />
+			<input
+				type="number"
+				step="10"
+				min="0"
+				max="100"
+				v-model="letterOpacity"
+			/>
 			<label>Letter opacity</label>
 		</div>
 		<div class="input-field">
-			<input type="number" min="0" max="100" v-model="borderOpacity" />
+			<input
+				type="number"
+				step="10"
+				min="0"
+				max="100"
+				v-model="borderOpacity"
+			/>
 			<label>Border opacity</label>
 		</div>
 		<div class="input-field">
@@ -13,16 +25,8 @@
 			<label>Gap</label>
 		</div>
 		<div class="input-field">
-			<input type="number" min="0" max="100" v-model="sizeWidth" />
-			<label>width</label>
-		</div>
-		<div class="input-field">
-			<input type="number" min="0" max="100" v-model="sizeHeight" />
-			<label>height</label>
-		</div>
-		<div class="input-field">
-			<input type="number" min="1" max="30" v-model="totalWidth" />
-			<label>columns</label>
+			<input type="number" min="0" max="100" v-model="sizeSize" />
+			<label>Size</label>
 		</div>
 	</div>
 </template>
@@ -58,28 +62,12 @@ export default Vue.extend({
 				this.$store.dispatch('setSetting', { size: { gap: val } });
 			}
 		},
-		sizeWidth: {
+		sizeSize: {
 			get() {
-				return this.$store.getters['getSettings'].size.width;
+				return this.$store.getters['getSettings'].size.size;
 			},
 			set(val) {
-				this.$store.dispatch('setSetting', { size: { width: val } });
-			}
-		},
-		sizeHeight: {
-			get() {
-				return this.$store.getters['getSettings'].size.height;
-			},
-			set(val) {
-				this.$store.dispatch('setSetting', { size: { height: val } });
-			}
-		},
-		totalWidth: {
-			get() {
-				return this.$store.getters['getSettings'].total.width;
-			},
-			set(val) {
-				this.$store.dispatch('setSetting', { total: { width: val } });
+				this.$store.dispatch('setSetting', { size: { size: val } });
 			}
 		}
 	},
@@ -93,16 +81,19 @@ export default Vue.extend({
 <style lang="scss">
 .settings {
 	position: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: white;
 	color: white;
 	top: 1em;
 	right: 1em;
 	display: flex;
+	color: rgba(0, 0, 0, 0.85);
+	border-radius: 0.5em;
+	overflow: hidden;
 	.input-field {
 		display: flex;
 		flex-direction: column-reverse;
 		input {
-			background-color: rgba(0, 0, 0, 1);
+			background-color: rgba(100, 200, 255, 1);
 			padding: 0.5em;
 			border: none;
 			font-size: 1em;

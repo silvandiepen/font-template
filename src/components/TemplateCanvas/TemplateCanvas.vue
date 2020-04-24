@@ -5,11 +5,13 @@
 				<h3 class="charset__title">{{ charset.title }}</h3>
 				<ul class="charset__set">
 					<li
-						class="charset__char"
+						class="charset__char-holder"
 						v-for="(char, idc) in charset.data"
 						:key="idc"
 					>
-						{{ char }}
+						<span class="charset__char">
+							{{ char }}
+						</span>
 					</li>
 				</ul>
 			</ul>
@@ -122,34 +124,41 @@ export default Vue.extend({
 	}
 }
 .charset {
+	margin: 0;
+	padding: 0;
 	ul,
 	li {
 		list-style-type: none;
 		margin: 0;
 	}
-	--char-width: calc(var(--size-width, 1) * 1cm);
-	--char-height: calc(var(--size-width, 1) * 1cm);
+	--char-size: calc(var(--size, 1) * 1cm);
 	--1fr: calc((var(--char-width) + var(--char-gap)) * 1cm);
 	&__set {
-		display: grid;
+		display: flex;
 		padding: 0;
 		align-items: start;
 		align-content: start;
 		justify-content: start;
-		grid-template-columns: repeat(var(--total-width, 13), 1fr);
-		gap: calc(var(--size-gap, 0.25) * 1cm);
+		flex-wrap: wrap;
+		margin: 0;
+		// grid-template-columns: repeat(var(--total-width, 13), var(--1fr));
+		// flex-gap: calc(var(--size-gap, 0.25) * 1cm);
+		// margin: calc(var(--size-gap, 0.25) * 1cm);
+	}
+	&__char-holder {
+		padding: calc(var(--size-gap, 0.25) * 1cm);
 	}
 	&__char {
 		display: block;
 		// width: 2em;
 
-		height: var(--char-height);
-		width: var(--char-width);
-		line-height: var(--char-height);
+		height: var(--char-size);
+		width: var(--char-size);
+		line-height: var(--char-size);
 		text-align: center;
 		border: 1px solid rgba(0, 0, 0, var(--opacity-border));
 		color: rgba(0, 0, 0, var(--opacity-letter));
-		font-size: 1.5em;
+		font-size: calc(var(--char-size) * 0.5);
 	}
 }
 </style>

@@ -12,12 +12,8 @@ export default new Vuex.Store({
 				border: 50
 			},
 			size: {
-				gap: 2,
-				width: 10,
-				height: 10
-			},
-			total: {
-				width: 13
+				gap: 1,
+				size: 12
 			}
 		}
 	},
@@ -37,11 +33,6 @@ export default new Vuex.Store({
 					...state.settings.size,
 					...value.size
 				};
-			else if (value.total)
-				state.settings.total = {
-					...state.settings.total,
-					...value.total
-				};
 		}
 	},
 	getters: {
@@ -59,9 +50,7 @@ export default new Vuex.Store({
 				'--opacity-letter': state.settings.opacity.letter / 100,
 				'--opacity-border': state.settings.opacity.border / 100,
 				'--size-gap': state.settings.size.gap / 10,
-				'--size-width': state.settings.size.width / 10,
-				'--size-height': state.settings.size.height / 10,
-				'--total-width': state.settings.total.width
+				'--size': state.settings.size.size / 10
 			};
 		}
 	},
