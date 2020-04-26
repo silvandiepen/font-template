@@ -64,8 +64,8 @@ export default Vue.extend({
 	methods: {
 		createImage() {
 			const node: HTMLElement | null = document.querySelector('#page');
-			const nodeSize = node.getBoundingClientRect();
 			if (node !== null) {
+				const nodeSize = node.getBoundingClientRect();
 				htmlToImage
 					.toPng(node, {
 						width: nodeSize.width,
