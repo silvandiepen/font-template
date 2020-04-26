@@ -74,7 +74,7 @@ export default Vue.extend({
 							},
 							''
 						);
-						this.download.fileName = `template-${fileName}`;
+						this.download.fileName = `template-${fileName}.png`;
 						this.download.active = true;
 						this.download.href = dataUrl;
 					})
@@ -111,13 +111,13 @@ export default Vue.extend({
 	padding: 1.25em;
 	font-size: 1em;
 	border: none;
-	background-color: rgba(0, 125, 125, 1);
-	color: white;
+	background-color: rgba(100, 200, 255, 1);
+	color: black;
 	border-radius: 4px;
 	line-height: 1em;
 	text-decoration: none;
 	&:hover {
-		background-color: rgba(0, 175, 175, 1);
+		background-color: rgba(90, 190, 245, 1);
 	}
 	&:focus {
 		outline: rgba(0, 225, 225, 1);

@@ -93,6 +93,7 @@ export default Vue.extend({
 		display: flex;
 		flex-direction: column-reverse;
 		input {
+			-webkit-appeareance: none;
 			background-color: rgba(100, 200, 255, 1);
 			padding: 0.5em;
 			border: none;
@@ -100,6 +101,11 @@ export default Vue.extend({
 			color: currentColor;
 			width: 100%;
 			display: block;
+			&:focus {
+				outline: none;
+				background-color: black;
+				color: white;
+			}
 		}
 		input[type='number'] {
 			// width: 3em;
