@@ -2,7 +2,9 @@
 	<div class="canvas" :style="canvasProps">
 		<div class="canvas__page" id="page">
 			<ul class="charset" v-for="(charset, idx) in charsSets" :key="idx">
-				<h3 class="charset__title">{{ charset.title }}</h3>
+				<h3 class="charset__title">
+					{{ charset.title }} <small>({{ charset.data.length }})</small>
+				</h3>
 				<ul class="charset__set">
 					<li
 						class="charset__char-holder"
@@ -62,9 +64,13 @@ export default Vue.extend({
 	methods: {
 		createImage() {
 			const node: HTMLElement | null = document.querySelector('#page');
+			const nodeSize = node.getBoundingClientRect();
 			if (node !== null) {
 				htmlToImage
-					.toPng(node)
+					.toPng(node, {
+						width: nodeSize.width,
+						height: nodeSize.height * 1.2
+					})
 					.then((dataUrl: string) => {
 						const img = new Image();
 						img.src = dataUrl;
@@ -159,6 +165,12 @@ export default Vue.extend({
 		border: 1px solid rgba(0, 0, 0, var(--opacity-border));
 		color: rgba(0, 0, 0, var(--opacity-letter));
 		font-size: calc(var(--char-size) * 0.5);
+	}
+	&__title {
+		small {
+			opacity: 0.5;
+			font-weight: normal;
+		}
 	}
 }
 </style>
