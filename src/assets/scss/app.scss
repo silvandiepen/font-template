@@ -1,3 +1,5 @@
+@import 'tools';
+
 html,
 body {
 	margin: 0;
@@ -10,16 +12,11 @@ body {
 * {
 	box-sizing: border-box;
 }
-$min-desktop: 'screen and (min-width: calc(21cm + 320px))';
-$max-desktop: 'screen and (max-width: calc(21cm + 320px))';
 #app {
 	height: 100vh;
 
-	@media #{$min-desktop} {
-		grid-template-areas: 'options canvas canvas canvas canvas';
-		display: grid;
-	}
-	@media #{$max-desktop} {
+	display: flex;
+	@media #{$mobile} {
 		display: block;
 	}
 }
@@ -28,26 +25,27 @@ $max-desktop: 'screen and (max-width: calc(21cm + 320px))';
 	z-index: 10;
 	position: relative;
 	height: 100vh;
+	width: 320px;
 	overflow: scroll;
-	@media #{$max-desktop} {
-		width: 320px;
+	@media #{$mobile} {
+		width: 100%;
 		position: fixed;
 		left: 0;
 		top: 0;
-		border-right: 1px solid rgba(0, 0, 0, 0.25);
-		transform: translateX(calc(-100% + 2em));
+		// transform: translateX(calc(-100% + 2em));
 		transition: transform 0.3s;
 		&:hover {
-			transform: translateX(calc(0cm));
+			// transform: translateX(calc(0cm));
 		}
 	}
 }
 .canvas-panel {
 	grid-area: canvas;
-	min-width: 50vw;
+	width: calc(100% - 320px);
 	height: 100vh;
 	overflow: scroll;
-	@media #{$max-desktop} {
+	@media #{$mobile} {
+		width: 100%;
 		#page {
 			//			transform: scale(0.5);
 		}
